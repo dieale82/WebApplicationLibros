@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<style>
+    table, td, th {
+        border: 1px solid;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+</style>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Book Id</th>
+            <th>Publishig House</th>
+            <th>Author</th>
+            <th>Description</th>
+            <th>Number of pages</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var bookData in ViewBag.BooksDataList)
+            {
+                <tr>
+                    <td>@bookData.ISBN</td>
+                    <td>@bookData.Editorial</td>
+                    <td>
+                        @foreach(var authorsData in bookData.Autores)
+                        {
+                            @String.Concat(@authorsData.Nombre," ", @authorsData.Apellidos)<br/>;
+                        }
+                    </td>
+                    <td>@bookData.Sinopsis</td>
+                    <td>@bookData.NPaginas</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
